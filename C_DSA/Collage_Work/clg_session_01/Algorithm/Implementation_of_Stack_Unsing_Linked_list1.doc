@@ -1,0 +1,41 @@
+push function:
+
+begin
+
+item->get[info]
+q[info]->item
+q[next]->top
+top=q
+
+retrun(top)
+
+pop function:
+
+begin
+
+if (top=NULL) then
+print("Stack is underflow")
+
+else
+q->top
+print("deleted element is q->info")
+top->top[next]
+free(q)
+
+end if
+
+return(top)
+
+display Function:
+
+begin
+
+if (top=NULL) then 
+print("Stack is empty")
+
+else
+while top!=NULL then do
+print(top->info)
+top->top[info]
+
+end if

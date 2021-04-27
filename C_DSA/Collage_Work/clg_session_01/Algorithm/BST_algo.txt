@@ -1,0 +1,48 @@
+INSERT:-
+
+1>begin
+2>compare ITEM with the root node of the tree.
+	I>if ITEM < N, proceed to the left child of N.
+	II>if ITEM > N, proceed to the right child of N.
+3>Repeat step 2 until one of the following occurs:
+	I>we meet a node N such that ITEM=N,in this case the search is sucessfull.
+	II>we meet an empty subtree, which indicates that the search is unsucessfull & we insert ITEM in place of the empty subtree.
+4>END
+
+Preorder:-
+
+initially ptr contains the address of root.
+1>begin.
+2>PUSH the adress of the root node on the stack.
+3>POP an adress from stack.
+4>if the POPPED adress is not NULL:
+	I>Traverse the node(display the node)
+	II>PUSH right child of the node on the stack.
+	III>PUSH left child of the node on the stack.
+5>repeat step 3,4 until the stack is not empty.
+6>end.
+
+Inorder:-
+
+initially ptr contains the address of the root.
+1>begin.
+2>repeat step 3,4 while stack is not empty or ptr is not equal to NULL.
+3>if ptr is not equal to NULL.
+	I>PUSH ptr on stack.
+	II>ptr = ptr->leftchild.
+4>if ptr is equal to NULL
+	I>POP an Adress from stack.
+	II>Traverse the node at the address (display)
+	III>ptr=ptr->rightchild.
+
+Postoder:-
+
+intially ptr contains the address of the root.
+1>begin
+2>PUSH the address of the root node on the stack.
+3>POP an adress from stack.
+4>if the POPPED adress is not NULL:
+	I>PUSH left child of the node on the stack.
+	II>PUSH right child of the node on the stack.
+	III>Traverse the node(display the node).
+5>end

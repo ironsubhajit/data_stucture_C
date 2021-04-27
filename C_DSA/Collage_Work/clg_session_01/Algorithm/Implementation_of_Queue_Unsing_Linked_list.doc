@@ -1,0 +1,35 @@
+insert()
+
+begin
+item->get[info]
+newnode[info]->item
+if (*rear=null) then
+	*fornt->newnode
+else *rear[next]->newnode
+end if
+*rear->newnode
+
+delete()
+
+begin
+
+if (*fornt=null) then print(underflow)
+else 
+	item->*fornt[info]
+	print(item)
+	temp->*fornt
+	if(*front=*rear) then *rear->*fornt->null
+	else *front->*front[next]
+	end if
+	free(temp)
+end if
+
+display()
+ 
+begin
+while(temp!=null) then do
+print(temp->info)
+temp->temp[next]
+end while
+
+end

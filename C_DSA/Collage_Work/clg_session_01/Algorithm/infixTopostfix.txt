@@ -1,0 +1,71 @@
+createStack(capacity):
+1>begin
+//2>if Stack is not created return null
+//3>else
+4>stack->top=-1
+5>stack->capacity=capacity
+//6>stack->array=(int*)malloc(stack->capacity *sizeof(int))
+7>return stack
+
+isEmpty(stack):
+1>begin
+2>return stack->top=-1
+3>end
+
+char peek(stack):
+1>begin
+2>return stack->array[stack->top--]
+3>end
+
+char pop(stack):
+1>begin
+2>if stack is not empty then
+3>return stack->array[stack->top--]
+4>else return $
+5>end
+
+push(stack,char op):
+1>begin
+2>stack->array[++stack->top] = op
+3>end
+
+isOpereand(char ch):
+1>begin
+2>return (ch>= a and ch<= z) or (ch>= A and ch<= Z)
+3>end
+
+precedence(char ch):
+1>begin
+2>if ch = + or ch = - then return 1
+3>else if ch = * or / then return 2
+4>else if ch = ^ then return 3
+END IF
+5>return -1
+6>end
+
+infixTOpostfix(char *exp):
+1>begin
+2>*stack = call createStack(string length of exp)
+//3>if stack is not created then return -1
+4>set i=o and k=-1
+5>repeat step 5 to step 9 until the exp ends (exp[i])
+6>if isOperand(exp[i]) is true then
+	I>exp[++k]=exp[i]
+7>else if exp[i] is equal to '(' then
+	I>call push(stack,exp[i])
+8>else if exp[i] is equal to ')' then
+	I>repeat step II until stack is not empty and call peek(stack) is not equal to '(' becomes False
+	II>exp[++k]= call pop(stack)
+	III>if stack is not empty and call peek(stack) is not equal to '(' then return -1
+	IV>else call POP(stack)
+	END IF
+9>else
+	I>repeat step II until stack is not empty and prec(exp[i]) <= prec(peek(stack)) becomes false
+	II>exp[++k]= call pop(stack)
+	III>call push(stack,exp[i])
+10>END IF
+11>repeat step 12 until stack is not empty becomes false
+12>exp[++k]=call pop(stack)
+13>set exp[++k]='\0' 
+14>display exp
+15>end
